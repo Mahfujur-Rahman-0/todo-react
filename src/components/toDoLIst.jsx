@@ -3,30 +3,50 @@ import { useState } from "react";
 export default () => {
   const [todom, settodom] = useState("");
   const [todos, settodos] = useState([]);
-  var handleSubmit = (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    settodos([...todos, todom]);
-    console.log(todos);
-    settodom("");
+    console.log(todom.trim());
+    if (todom.trim() !== "") {
+      settodos([...todos, todom]);
+      settodom("");
+    }
   };
+
+  const deletBtn = (item) => {
+    const updatedTodos = todos.filter((todo) => todo !== item);
+    settodos(updatedTodos);
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit} action="">
         <h1 className="header">To Do List</h1>
-        <input
-          onChange={(e) => {
-            settodom(e.target.value);
-          }}
-          value={todom}
-          type="text"
-        />
-        <button type="submit">add</button>
+        <div>
+          <input
+            onChange={(e) => {
+              settodom(e.target.value);
+            }}
+            value={todom}
+            type="text"
+          />
+          <button type="submit">Add</button>
+        </div>
       </form>
-      <ul>
-        {todos.map((item) => (
-          <li key={item}>{item}</li>
+      <div id="listItem">
+        {todos.map((item, index) => (
+          <p key={index}>
+            {item}
+            <button
+              onClick={() => {
+                deletBtn(item);
+              }}
+            >
+              X
+            </button>
+          </p>
         ))}
-      </ul>
+      </div>
     </>
   );
 };

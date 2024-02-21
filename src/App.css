@@ -5,8 +5,43 @@ body {
 }
 
 .header {
-  background-color: yellow;
+  background-color: #dbdb3c;
   text-align: center;
   padding: 20px 0;
   margin: 0;
+}
+#listItem p {
+  margin: 3px auto;
+  padding: 20px 10px;
+  background-color: aqua;
+  width: 50%;
+}
+#listItem {
+  margin-top: 30px;
+  margin: 30px auto;
+  width: 50%;
+}
+form > div {
+  width: 50%;
+  height: 70px;
+  margin: 10px auto;
+  text-align: center;
+}
+div > input {
+  width: 100%;
+  height: 40px;
+  margin: 10px auto;
+  text-align: center;
+  font-size: larger;
+}
+
+div > button {
+  width: 100%;
+}
+#listItem > p {
+  width: 90%;
+  float: left;
+}
+#listItem > p > button {
+  float: right;
 }
